@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Balls‑Chin Generator</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 20px;
+      background: #f6f7fb;
+      color: #333;
+    }
+    h1 {
+      margin-top: 0;
+      font-size: 2rem;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    #canvasContainer {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      margin-top: 20px;
+    }
+    canvas {
+      width: 100%;
+      height: auto;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      background: #fff;
+    }
+    .controls {
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .controls label {
+      font-size: 0.9rem;
+    }
+    .controls input[type="range"] {
+      width: 100%;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 1rem;
+      border: none;
+      border-radius: 6px;
+      background: #007bff;
+      color: #fff;
+      cursor: pointer;
+    }
+    button:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Balls‑Chin Generator</h1>
+    <p>Upload a photo and add a cartoonish balls‑chin to the person’s face. Use the intensity slider to adjust the size. This runs entirely client‑side.</p>
+    <input type="file" id="fileInput" accept="image/*" />
+    <div class="controls">
+      <label for="intensity">Intensity</label>
+      <input type="range" id="intensity" min="0" max="1" step="0.1" value="0.5" />
+      <button id="generateBtn" disabled>Generate</button>
+      <button id="downloadBtn" disabled>Download</button>
+    </div>
+    <div id="canvasContainer">
+      <canvas id="canvas"></canvas>
+    </div>
+  </div>
+  <!-- Load MediaPipe FaceMesh from CDN. This script provides the FaceMesh class. -->
+  <script src="https://cdn.jsdelivr.net/npm/@mediapipe/face_mesh/face_mesh.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
